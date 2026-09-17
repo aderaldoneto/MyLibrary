@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %}Novo livro | MyLibrary{% endblock %}
+{% block body %}
+    <main class="catalog-page form-page">
+        <a class="back-link" href="{{ path('app_livro_index') }}">← Livros</a>
+        <h1>Novo livro</h1><p>Preencha os dados e relacione autores e assuntos.</p>
+        {% include 'livro/_form.html.twig' with {form: form} only %}
+    </main>
+{% endblock %}

@@ -45,6 +45,7 @@ class Livro
     #[ORM\JoinTable(name: 'livro_autor')]
     #[ORM\JoinColumn(name: 'livro_cod_l', referencedColumnName: 'cod_l', nullable: false, onDelete: 'CASCADE')]
     #[ORM\InverseJoinColumn(name: 'autor_cod_au', referencedColumnName: 'cod_au', nullable: false, onDelete: 'RESTRICT')]
+    #[Assert\Count(min: 1, minMessage: 'Selecione ao menos um autor.')]
     private Collection $autores;
 
     /** @var Collection<int, Assunto> */
@@ -52,6 +53,7 @@ class Livro
     #[ORM\JoinTable(name: 'livro_assunto')]
     #[ORM\JoinColumn(name: 'livro_cod_l', referencedColumnName: 'cod_l', nullable: false, onDelete: 'CASCADE')]
     #[ORM\InverseJoinColumn(name: 'assunto_cod_as', referencedColumnName: 'cod_as', nullable: false, onDelete: 'RESTRICT')]
+    #[Assert\Count(min: 1, minMessage: 'Selecione ao menos um assunto.')]
     private Collection $assuntos;
 
     public function __construct()

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ livro.titulo }} | MyLibrary{% endblock %}
+{% block body %}
+    <main class="catalog-page form-page">
+        <a class="back-link" href="{{ path('app_livro_index') }}">← Livros</a>
+        <h1>{{ livro.titulo }}</h1>
+        <section class="details-card">
+            <dl>
+                <dt>Editora</dt><dd>{{ livro.editora }}</dd>
+                <dt>Edição</dt><dd>{{ livro.edicao }}</dd>
+                <dt>Ano de publicação</dt><dd>{{ livro.anoPublicacao }}</dd>
+                <dt>Valor</dt><dd>R$ {{ (livro.valor / 100)|number_format(2, ',', '.') }}</dd>
+                <dt>Autores</dt><dd>{{ livro.autores|map(autor => autor.nome)|join(', ') }}</dd>
+                <dt>Assuntos</dt><dd>{{ livro.assuntos|map(assunto => assunto.descricao)|join(', ') }}</dd>
+            </dl>
+            <a class="button" href="{{ path('app_livro_editar', {codigo: livro.codigo}) }}">Editar livro</a>
+        </section>
+    </main>
+{% endblock %}

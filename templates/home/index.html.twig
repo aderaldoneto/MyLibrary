@@ -15,7 +15,8 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
             <div style="padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
                 <h2 style="margin-top: 0; font-size: 18px;">Acervo</h2>
-                <p style="margin-bottom: 0; color: #475467;">Gerencie os livros da biblioteca.</p>
+                <p style="margin-bottom: 12px; color: #475467;">Gerencie os livros da biblioteca.</p>
+                <a href="{{ path('app_livro_index') }}">Gerenciar livros</a>
             </div>
             <div style="padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
                 <h2 style="margin-top: 0; font-size: 18px;">Autores</h2>
@@ -26,6 +27,10 @@
                 <h2 style="margin-top: 0; font-size: 18px;">Assuntos</h2>
                 <p style="margin-bottom: 12px; color: #475467;">Organize os assuntos do catálogo.</p>
                 <a href="{{ path('app_assunto_index') }}">Gerenciar assuntos</a>
+            </div>
+            <div style="padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
+                <h2 style="margin-top: 0; font-size: 18px;">Relatórios</h2>
+                <p style="margin-bottom: 12px; color: #475467;">Acesse relatórios do acervo.</p>
             </div>
         </div>
     </div>
