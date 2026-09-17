@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar autor | MyLibrary{% endblock %}
+
+{% block body %}
+    <main class="catalog-page form-page">
+        <a class="back-link" href="{{ path('app_autor_index') }}">← Autores</a>
+        <h1>Editar autor</h1>
+        <p>Atualize os dados de {{ autor.nome }}.</p>
+        {% include 'autor/_form.html.twig' with {form: form} only %}
+    </main>
+{% endblock %}

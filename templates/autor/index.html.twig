@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Autores | MyLibrary{% endblock %}
+
+{% block body %}
+    <main class="catalog-page">
+        <header class="catalog-header">
+            <div>
+                <a class="back-link" href="{{ path('app_home') }}">← Voltar para a home</a>
+                <h1>Autores</h1>
+                <p>Gerencie os autores disponíveis no catálogo.</p>
+            </div>
+            <a class="button" href="{{ path('app_autor_novo') }}">Novo autor</a>
+        </header>
+
+        {% for message in app.flashes('success') %}
+            <div class="flash flash-success" role="status">{{ message }}</div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="flash flash-error" role="alert">{{ message }}</div>
+        {% endfor %}
+
+        {% if autores is empty %}
+            <section class="empty-state">
+                <h2>Nenhum autor cadastrado</h2>
+                <p>Cadastre o primeiro autor para começar a organizar o acervo.</p>
+            </section>
+        {% else %}
+            <section class="table-card">
+                <table>
+                    <thead><tr><th>Código</th><th>Nome</th><th class="actions-column">Ações</th></tr></thead>
+                    <tbody>
+                    {% for autor in autores %}
+                        <tr>
+                            <td>{{ autor.codigo }}</td>
+                            <td>{{ autor.nome }}</td>
+                            <td class="table-actions">
+                                <a class="link-button" href="{{ path('app_autor_editar', {codigo: autor.codigo}) }}">Editar</a>
+                                <form method="post" action="{{ path('app_autor_excluir', {codigo: autor.codigo}) }}" onsubmit="return confirm('Excluir o autor {{ autor.nome|e('js') }}?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('excluir_autor_' ~ autor.codigo) }}">
+                                    <button class="link-button danger" type="submit">Excluir</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        {% endif %}
+    </main>
+{% endblock %}
