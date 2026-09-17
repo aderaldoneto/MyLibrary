@@ -183,6 +183,10 @@ body:has(.auth-portal) {
     text-decoration: none;
     width: fit-content;
 }
+.report-header { align-items: center; justify-content: space-between; }
+.report-author { border: 1px solid #dce4e9; border-radius: 8px; overflow: hidden; }
+.report-author h3 { background: #eef5f8; color: #174f73; font-size: 1rem; margin: 0; padding: 12px 16px; }
+.report-author .table { margin-bottom: 0; }
 
 .authors-portal {
     min-height: calc(100vh - 100px);

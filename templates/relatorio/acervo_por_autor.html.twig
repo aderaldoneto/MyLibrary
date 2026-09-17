@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Relatório do acervo por autor | MyLibrary{% endblock %}
+
+{% block body %}
+    <main class="auth-portal app-portal">
+        <section class="app-shell container">
+            <div class="app-content-panel card shadow-sm border-0">
+                <div class="app-content-panel__header report-header">
+                    <div class="app-panel-title-wrap">
+                        <span class="auth-lock" aria-hidden="true">📊</span>
+                        <div>
+                            <h2>Relatório do acervo por autor</h2>
+                            <p>Dados obtidos da view de relatório e agrupados por autor.</p>
+                        </div>
+                    </div>
+                </div>
+
+                {% if autores is empty %}
+                    <div class="alert alert-info mb-0" role="status">Não há livros com autores para exibir no relatório.</div>
+                {% else %}
+                    {% for autor in autores %}
+                        <section class="report-author mb-4">
+                            <h3>{{ autor.nome }}</h3>
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0">
+                                    <thead><tr><th>Livro</th><th>Editora</th><th>Edição</th><th>Ano</th><th>Assuntos</th><th class="text-end">Valor</th></tr></thead>
+                                    <tbody>
+                                    {% for livro in autor.livros %}
+                                        <tr>
+                                            <td>{{ livro.titulo }}</td><td>{{ livro.editora }}</td><td>{{ livro.edicao }}</td><td>{{ livro.ano_publicacao }}</td>
+                                            <td>{{ livro.assuntos ?: '—' }}</td><td class="text-end">R$ {{ (livro.valor / 100)|number_format(2, ',', '.') }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </section>
+    </main>
+{% endblock %}
