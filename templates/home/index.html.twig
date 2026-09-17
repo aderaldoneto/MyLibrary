@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div style="max-width: 900px; margin: 60px auto; padding: 32px; font-family: Arial, sans-serif;">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px;">
+            <div>
+                <h1 style="margin: 0;">Home</h1>
+                <p style="margin: 8px 0 0; color: #475467;">Bem-vindo(a), {{ user.userName }} {{ user.userLastName }}</p>
+            </div>
+            <a href="{{ path('app_logout') }}" style="padding: 10px 16px; background: #111827; color: white; border-radius: 8px; text-decoration: none;">Sair</a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+            <div style="padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
+                <h2 style="margin-top: 0; font-size: 18px;">Acervo</h2>
+                <p style="margin-bottom: 0; color: #475467;">Gerencie os livros da biblioteca.</p>
+            </div>
+            <div style="padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
+                <h2 style="margin-top: 0; font-size: 18px;">Usuários</h2>
+                <p style="margin-bottom: 0; color: #475467;">Controle de acesso e permissões.</p>
+            </div>
+            <div style="padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
+                <h2 style="margin-top: 0; font-size: 18px;">Empréstimos</h2>
+                <p style="margin-bottom: 0; color: #475467;">Acompanhe reservas e devoluções.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
