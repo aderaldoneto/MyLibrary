@@ -1,0 +1,7 @@
+{{ form_start(form, {attr: {class: 'catalog-form'}}) }}
+    {{ form_row(form.descricao) }}
+    <div class="form-actions">
+        <a class="link-button" href="{{ path('app_assunto_index') }}">Cancelar</a>
+        <button type="submit">Salvar</button>
+    </div>
+{{ form_end(form) }}

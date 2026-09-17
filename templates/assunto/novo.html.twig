@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novo assunto | MyLibrary{% endblock %}
+
+{% block body %}
+    <main class="catalog-page form-page">
+        <a class="back-link" href="{{ path('app_assunto_index') }}">← Assuntos</a>
+        <h1>Novo assunto</h1>
+        <p>Informe a descrição do assunto.</p>
+        {% include 'assunto/_form.html.twig' with {form: form} only %}
+    </main>
+{% endblock %}
