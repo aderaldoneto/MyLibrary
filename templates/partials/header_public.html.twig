@@ -1,15 +1,17 @@
-<header class="auth-header">
-    <a class="auth-brand" href="{{ path('app_login') }}" aria-label="MyLibrary Eletrônico">
-        <span class="auth-brand-mark" aria-hidden="true">MLe</span>
-        <span>MyLibrary Eletrônico</span>
-    </a>
-    <nav class="auth-nav" aria-label="Navegação informativa">
-        <button type="button">Entrar</button>
-        <button type="button">Formas de acesso</button>
-        <button type="button">Consulta processual</button>
-        <button type="button">Push</button>
-        <button type="button">Pré-requisitos</button>
-        <button type="button">Manuais</button>
-        <button type="button">Fale conosco</button>
-    </nav>
+<header class="auth-header navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid px-3">
+        <a class="auth-brand navbar-brand" href="{{ path('app_login') }}" aria-label="MyLibrary Eletrônico">
+            <span class="auth-brand-mark" aria-hidden="true">MLe</span>
+            <span>MyLibrary Eletrônico</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-menu-toggle="#public-navigation" aria-controls="public-navigation" aria-expanded="false" aria-label="Alternar navegação"><span class="navbar-toggler-icon"></span></button>
+        <nav class="auth-nav collapse navbar-collapse ms-lg-auto" id="public-navigation" aria-label="Navegação informativa">
+            <div class="navbar-nav ms-lg-auto">
+                <button type="button" class="nav-link">Entrar</button>
+                <button type="button" class="nav-link">Formas de acesso</button>
+                <button type="button" class="nav-link">Consulta processual</button>
+                <button type="button" class="nav-link">Ajuda</button>
+            </div>
+        </nav>
+    </div>
 </header>

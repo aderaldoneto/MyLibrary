@@ -14,7 +14,8 @@ final class AutorType extends AbstractType
     {
         $builder->add('nome', TextType::class, [
             'label' => 'Nome',
-            'attr' => ['maxlength' => 40, 'autocomplete' => 'name'],
+            'attr' => ['class' => 'form-control', 'maxlength' => 40, 'autocomplete' => 'name'],
+            'label_attr' => ['class' => 'form-label'],
         ]);
     }
 

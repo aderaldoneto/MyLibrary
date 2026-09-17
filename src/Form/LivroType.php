@@ -20,23 +20,25 @@ final class LivroType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titulo', TextType::class, ['label' => 'Título', 'attr' => ['maxlength' => 40]])
-            ->add('editora', TextType::class, ['label' => 'Editora', 'attr' => ['maxlength' => 40]])
-            ->add('edicao', IntegerType::class, ['label' => 'Edição', 'attr' => ['min' => 1]])
+            ->add('titulo', TextType::class, ['label' => 'Título', 'attr' => ['class' => 'form-control', 'maxlength' => 40], 'label_attr' => ['class' => 'form-label']])
+            ->add('editora', TextType::class, ['label' => 'Editora', 'attr' => ['class' => 'form-control', 'maxlength' => 40], 'label_attr' => ['class' => 'form-label']])
+            ->add('edicao', IntegerType::class, ['label' => 'Edição', 'attr' => ['class' => 'form-control', 'min' => 1], 'label_attr' => ['class' => 'form-label']])
             ->add('anoPublicacao', TextType::class, [
                 'label' => 'Ano de publicação', 
                 'help' => 'Ex.: ' . date('Y'),
-                'attr' => ['maxlength' => 4, 'inputmode' => 'numeric', 'pattern' => '\\d{4}']])
+                'attr' => ['class' => 'form-control', 'maxlength' => 4, 'inputmode' => 'numeric', 'pattern' => '\\d{4}'],
+                'label_attr' => ['class' => 'form-label']])
             ->add('valor', TextType::class, [
                 'label' => 'Valor',
-                'attr' => ['data-currency-mask' => true, 'inputmode' => 'numeric', 'autocomplete' => 'off'],
+                'attr' => ['class' => 'form-control', 'data-currency-mask' => true, 'inputmode' => 'numeric', 'autocomplete' => 'off'],
+                'label_attr' => ['class' => 'form-label'],
             ])
             ->add('autores', EntityType::class, [
-                'class' => Autor::class, 'choice_label' => 'nome', 'label' => 'Autores', 'multiple' => true, 'by_reference' => false,
+                'class' => Autor::class, 'choice_label' => 'nome', 'label' => 'Autores', 'multiple' => true, 'by_reference' => false, 'attr' => ['class' => 'form-select'], 'label_attr' => ['class' => 'form-label'],
                 'query_builder' => static fn (AutorRepository $repository) => $repository->createQueryBuilder('autor')->orderBy('autor.nome', 'ASC'),
             ])
             ->add('assuntos', EntityType::class, [
-                'class' => Assunto::class, 'choice_label' => 'descricao', 'label' => 'Assuntos', 'multiple' => true, 'by_reference' => false,
+                'class' => Assunto::class, 'choice_label' => 'descricao', 'label' => 'Assuntos', 'multiple' => true, 'by_reference' => false, 'attr' => ['class' => 'form-select'], 'label_attr' => ['class' => 'form-label'],
                 'query_builder' => static fn (AssuntoRepository $repository) => $repository->createQueryBuilder('assunto')->orderBy('assunto.descricao', 'ASC'),
             ]);
 

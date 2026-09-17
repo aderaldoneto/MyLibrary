@@ -14,7 +14,8 @@ final class AssuntoType extends AbstractType
     {
         $builder->add('descricao', TextType::class, [
             'label' => 'Descrição',
-            'attr' => ['maxlength' => 20],
+            'attr' => ['class' => 'form-control', 'maxlength' => 20],
+            'label_attr' => ['class' => 'form-label'],
         ]);
     }
 

@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-    background-color: red;
+    background-color: #ebf0f3;
     display: flex;
     flex-direction: column;
     font-family: Arial, sans-serif;
@@ -18,7 +18,7 @@ body {
 }
 
 body:has(.auth-portal) {
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .auth-portal {
@@ -217,7 +217,7 @@ body:has(.auth-portal) {
     margin-top: 0;
 }
 .authors-table-card {
-    overflow: hidden;
+    overflow: auto;
 }
 .author-form {
     max-width: 520px;
@@ -245,6 +245,8 @@ body:has(.auth-portal) {
     box-shadow: 0 0 0 2px rgba(37, 114, 162, .15);
     outline: 0;
 }
+.author-form .form-error-message,
+.livro-form .form-error-message { color: #b42318; display: block; font-size: .875rem; margin-top: .35rem; }
 .author-form-actions {
     align-items: center;
     display: flex;
@@ -305,10 +307,18 @@ body:has(.auth-portal) {
     color: #475467;
     margin: 0;
 }
-@media (max-width: 720px) {
+@media (max-width: 991.98px) {
     .auth-header { align-items: flex-start; flex-direction: column; padding: 14px 24px 0; }
     .auth-nav { align-self: auto; flex-wrap: wrap; }
     .auth-nav button, .app-nav .app-logout { border-top: 1px solid rgba(255,255,255,.17); font-size: .72rem; padding: 11px 10px; }
+    .auth-nav.show { display: block; width: 100%; }
+    .auth-nav.show .navbar-nav { display: flex; width: 100%; }
+    .app-nav.show .app-menu-item,
+    .app-nav.show .app-logout { display: flex; min-height: 44px; width: 100%; }
+    .app-header { flex-direction: row; min-height: 50px; padding: 0 15px; }
+    .app-header .app-nav { align-self: center; display: flex; width: auto; }
+    .app-header .app-menu-item { display: none; }
+    .app-header .app-logout { border: 0; display: inline-flex; min-height: 50px; padding: 0 4px; }
     .auth-footer { flex-direction: column; }
     .app-shell { padding-top: 20px; }
     .app-content-panel { padding: 22px 20px 24px; }

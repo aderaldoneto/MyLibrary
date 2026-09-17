@@ -30,6 +30,19 @@ document.addEventListener('input', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-menu-toggle]').forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+            const menu = document.querySelector(toggle.dataset.menuToggle);
+
+            if (!menu) {
+                return;
+            }
+
+            const isOpen = menu.classList.toggle('show');
+            toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+    });
+
     const menuItems = document.querySelectorAll('.app-menu-item');
     const panels = document.querySelectorAll('.app-panel-content');
     const title = document.getElementById('app-panel-title');

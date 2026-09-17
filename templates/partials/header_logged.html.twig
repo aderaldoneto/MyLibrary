@@ -1,13 +1,12 @@
-<header class="auth-header app-header">
-    <a class="auth-brand" href="{{ path('app_home') }}" aria-label="MyLibrary Eletrônico">
-        <span class="auth-brand-mark" aria-hidden="true">MLe</span>
-        <span>MyLibrary Eletrônico</span>
-    </a>
-
-    <nav class="auth-nav app-nav" aria-label="Menu principal">
-        <button type="button" class="app-menu-item" data-target="home">
-            {{ app.user.userName }} {{ app.user.userLastName }}
-        </button>
-        <a href="{{ path('app_logout') }}" class="app-logout">Sair</a>
-    </nav>
+<header class="auth-header app-header navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid px-3">
+        <a class="auth-brand navbar-brand" href="{{ path('app_home') }}" aria-label="MyLibrary Eletrônico">
+            <span class="auth-brand-mark" aria-hidden="true">MLe</span>
+            <span>MyLibrary Eletrônico</span>
+        </a>
+        <nav class="auth-nav app-nav ms-auto" aria-label="Menu principal">
+            <span class="app-menu-item navbar-text px-lg-3">{{ app.user.userName }} {{ app.user.userLastName }}</span>
+            <a href="{{ path('app_logout') }}" class="app-logout nav-link px-lg-3">Sair</a>
+        </nav>
+    </div>
 </header>

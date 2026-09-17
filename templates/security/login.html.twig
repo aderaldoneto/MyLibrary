@@ -5,7 +5,7 @@
 {% block body %}
     <div class="auth-portal">
         <main class="auth-main">
-            <section class="auth-access-panel" aria-labelledby="login-title">
+            <section class="auth-access-panel card shadow-sm border-0" aria-labelledby="login-title">
                 <div class="auth-panel-heading">
                     <span class="auth-lock" aria-hidden="true">📖</span>
                     <div>
@@ -15,19 +15,19 @@
                 </div>
 
                 {% if error %}
-                    <div class="auth-alert" role="alert">E-mail ou senha inválidos!</div>
+                    <div class="auth-alert alert alert-danger" role="alert">E-mail ou senha inválidos!</div>
                 {% endif %}
 
                 <form method="post" class="auth-form">
                     <div class="auth-field">
                         <label for="username">E-mail</label>
-                        <input id="username" type="email" name="_username" value="{{ last_username }}" autocomplete="email" required autofocus>
+                        <input class="form-control" id="username" type="email" name="_username" value="{{ last_username }}" autocomplete="email" required autofocus>
                     </div>
                     <div class="auth-field">
                         <label for="password">Senha</label>
-                        <input id="password" type="password" name="_password" autocomplete="current-password" required>
+                        <input class="form-control" id="password" type="password" name="_password" autocomplete="current-password" required>
                     </div>
-                    <button class="auth-submit" type="submit">ENTRAR</button>
+                    <button class="auth-submit btn btn-primary" type="submit">ENTRAR</button>
                 </form>
             </section>
         </main>
