@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+use App\Repository\AutorRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: AutorRepository::class)]
 #[ORM\Table(name: 'autor')]
 class Autor
 {
@@ -28,7 +29,7 @@ class Autor
     }
 
     public function setNome(string $nome): self { 
-        $this->nome = $nome; 
+        $this->nome = trim($nome);
         return $this; 
     }
 

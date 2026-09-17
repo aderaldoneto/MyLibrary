@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
+use App\Repository\LivroRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: LivroRepository::class)]
 #[ORM\Table(name: 'livro')]
 class Livro
 {
@@ -31,6 +32,7 @@ class Livro
     private int $edicao = 1;
 
     #[ORM\Column(name: 'ano_publicacao', length: 4)]
+    #[Assert\NotBlank]
     #[Assert\Regex(pattern: '/^\d{4}$/', message: 'O ano de publicação deve ter quatro dígitos.')]
     private string $anoPublicacao = '';
 
@@ -67,7 +69,7 @@ class Livro
     }
 
     public function setTitulo(string $titulo): self { 
-        $this->titulo = $titulo; 
+        $this->titulo = trim($titulo);
         return $this; 
     }
 
@@ -76,7 +78,7 @@ class Livro
     }
 
     public function setEditora(string $editora): self { 
-        $this->editora = $editora; 
+        $this->editora = trim($editora);
         return $this; 
     }
 
@@ -94,7 +96,7 @@ class Livro
     }
 
     public function setAnoPublicacao(string $anoPublicacao): self { 
-        $this->anoPublicacao = $anoPublicacao; 
+        $this->anoPublicacao = trim($anoPublicacao);
         return $this; 
     }
 

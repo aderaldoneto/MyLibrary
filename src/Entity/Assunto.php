@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+use App\Repository\AssuntoRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: AssuntoRepository::class)]
 #[ORM\Table(name: 'assunto')]
 class Assunto
 {
@@ -28,7 +29,7 @@ class Assunto
     }
 
     public function setDescricao(string $descricao): self { 
-        $this->descricao = $descricao; 
+        $this->descricao = trim($descricao);
         return $this; 
     }
 
