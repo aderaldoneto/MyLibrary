@@ -4,12 +4,9 @@
 
 {% block body %}
     <div style="max-width: 900px; margin: 60px auto; padding: 32px; font-family: Arial, sans-serif;">
-        <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px;">
-            <div>
-                <h1 style="margin: 0;">Home</h1>
-                <p style="margin: 8px 0 0; color: #475467;">Bem-vindo(a), {{ user.userName }} {{ user.userLastName }}</p>
-            </div>
-            <a href="{{ path('app_logout') }}" style="padding: 10px 16px; background: #111827; color: white; border-radius: 8px; text-decoration: none;">Sair</a>
+        <div style="margin-bottom: 24px;">
+            <h1 style="margin: 0;">Home</h1>
+            <p style="margin: 8px 0 0; color: #475467;">Bem-vindo(a), {{ user.userName }} {{ user.userLastName }}</p>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">

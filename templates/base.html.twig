@@ -19,6 +19,16 @@
         {% endif %}
     </head>
     <body>
+        {% if app.user %}
+            {% include 'partials/header_logged.html.twig' %}
+        {% else %}
+            {% include 'partials/header_public.html.twig' %}
+        {% endif %}
+
         {% block body %}{% endblock %}
+
+        {% if not app.user %}
+            {% include 'partials/footer_public.html.twig' %}
+        {% endif %}
     </body>
 </html>
