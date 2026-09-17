@@ -5,7 +5,9 @@
     </a>
 
     <nav class="auth-nav app-nav" aria-label="Menu principal">
-        <button type="button" class="app-menu-item" data-target="home">{{ user.userName }} {{ user.userLastName }}</button>
+        <button type="button" class="app-menu-item" data-target="home">
+            {{ app.user.userName }} {{ app.user.userLastName }}
+        </button>
         <a href="{{ path('app_logout') }}" class="app-logout">Sair</a>
     </nav>
 </header>

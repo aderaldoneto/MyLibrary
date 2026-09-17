@@ -3,10 +3,26 @@
 {% block title %}Novo autor | MyLibrary{% endblock %}
 
 {% block body %}
-    <main class="catalog-page form-page">
-        <a class="back-link" href="{{ path('app_autor_index') }}">← Autores</a>
-        <h1>Novo autor</h1>
-        <p>Informe o nome do autor.</p>
-        {% include 'autor/_form.html.twig' with {form: form} only %}
+    <main class="auth-portal app-portal authors-portal">
+        <section class="app-shell authors-shell">
+            <div class="app-welcome authors-welcome">
+                <h1>Novo autor</h1>
+            </div>
+
+            <div class="app-content-panel authors-panel">
+                <div class="app-content-panel__header authors-header-row">
+                    <div class="app-panel-title-wrap">
+                        <span class="auth-lock" aria-hidden="true">✍️</span>
+                        <div>
+                            <h2>Cadastro de autor</h2>
+                            <p>Informe os dados do novo autor.</p>
+                        </div>
+                    </div>
+                    <a class="link-button" href="{{ path('app_autor_index') }}">← Voltar</a>
+                </div>
+
+                {% include 'autor/_form.html.twig' with {form: form} only %}
+            </div>
+        </section>
     </main>
 {% endblock %}

@@ -1,9 +1,28 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}Editar livro | MyLibrary{% endblock %}
+
 {% block body %}
-    <main class="catalog-page form-page">
-        <a class="back-link" href="{{ path('app_livro_index') }}">← Livros</a>
-        <h1>Editar livro</h1><p>Atualize os dados de {{ livro.titulo }}.</p>
-        {% include 'livro/_form.html.twig' with {form: form} only %}
+    <main class="auth-portal app-portal authors-portal">
+        <section class="app-shell authors-shell">
+            <div class="app-welcome authors-welcome">
+                <h1>Editar livro</h1>
+            </div>
+
+            <div class="app-content-panel authors-panel">
+                <div class="app-content-panel__header authors-header-row">
+                    <div class="app-panel-title-wrap">
+                        <span class="auth-lock" aria-hidden="true">📝</span>
+                        <div>
+                            <h2>Atualização de livro</h2>
+                            <p>Atualize os dados de {{ livro.titulo }}.</p>
+                        </div>
+                    </div>
+                    <a class="link-button" href="{{ path('app_livro_index') }}">← Voltar</a>
+                </div>
+
+                {% include 'livro/_form.html.twig' with {form: form} only %}
+            </div>
+        </section>
     </main>
 {% endblock %}

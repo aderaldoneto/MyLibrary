@@ -3,10 +3,26 @@
 {% block title %}Editar assunto | MyLibrary{% endblock %}
 
 {% block body %}
-    <main class="catalog-page form-page">
-        <a class="back-link" href="{{ path('app_assunto_index') }}">← Assuntos</a>
-        <h1>Editar assunto</h1>
-        <p>Atualize os dados de {{ assunto.descricao }}.</p>
-        {% include 'assunto/_form.html.twig' with {form: form} only %}
+    <main class="auth-portal app-portal authors-portal">
+        <section class="app-shell authors-shell">
+            <div class="app-welcome authors-welcome">
+                <h1>Editar assunto</h1>
+            </div>
+
+            <div class="app-content-panel authors-panel">
+                <div class="app-content-panel__header authors-header-row">
+                    <div class="app-panel-title-wrap">
+                        <span class="auth-lock" aria-hidden="true">📝</span>
+                        <div>
+                            <h2>Atualização de assunto</h2>
+                            <p>Atualize os dados de {{ assunto.descricao }}.</p>
+                        </div>
+                    </div>
+                    <a class="link-button" href="{{ path('app_assunto_index') }}">← Voltar</a>
+                </div>
+
+                {% include 'assunto/_form.html.twig' with {form: form} only %}
+            </div>
+        </section>
     </main>
 {% endblock %}

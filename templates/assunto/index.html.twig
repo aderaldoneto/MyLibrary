@@ -3,49 +3,65 @@
 {% block title %}Assuntos | MyLibrary{% endblock %}
 
 {% block body %}
-    <main class="catalog-page">
-        <header class="catalog-header">
-            <div>
-                <a class="back-link" href="{{ path('app_home') }}">← Voltar para a home</a>
+    <main class="auth-portal app-portal authors-portal">
+        <section class="app-shell authors-shell">
+            <div class="app-welcome authors-welcome">
                 <h1>Assuntos</h1>
-                <p>Gerencie os assuntos disponíveis no catálogo.</p>
             </div>
-            <a class="button" href="{{ path('app_assunto_novo') }}">Novo assunto</a>
-        </header>
 
-        {% for message in app.flashes('success') %}
-            <div class="flash flash-success" role="status">{{ message }}</div>
-        {% endfor %}
-        {% for message in app.flashes('error') %}
-            <div class="flash flash-error" role="alert">{{ message }}</div>
-        {% endfor %}
+            <div class="app-content-panel authors-panel">
+                <div class="app-content-panel__header authors-header-row">
+                    <div class="app-panel-title-wrap">
+                        <span class="auth-lock" aria-hidden="true">📚</span>
+                        <div>
+                            <h2>Gerenciamento de assuntos</h2>
+                            <p>Cadastre, edite e mantenha os assuntos do catálogo.</p>
+                        </div>
+                    </div>
+                    <a class="auth-submit app-submit" href="{{ path('app_assunto_novo') }}">Novo assunto</a>
+                </div>
 
-        {% if assuntos is empty %}
-            <section class="empty-state">
-                <h2>Nenhum assunto cadastrado</h2>
-                <p>Cadastre o primeiro assunto para organizar o acervo.</p>
-            </section>
-        {% else %}
-            <section class="table-card">
-                <table>
-                    <thead><tr><th>Código</th><th>Descrição</th><th class="actions-column">Ações</th></tr></thead>
-                    <tbody>
-                    {% for assunto in assuntos %}
-                        <tr>
-                            <td>{{ assunto.codigo }}</td>
-                            <td>{{ assunto.descricao }}</td>
-                            <td class="table-actions">
-                                <a class="link-button" href="{{ path('app_assunto_editar', {codigo: assunto.codigo}) }}">Editar</a>
-                                <form method="post" action="{{ path('app_assunto_excluir', {codigo: assunto.codigo}) }}" onsubmit="return confirm('Excluir o assunto {{ assunto.descricao|e('js') }}?');">
-                                    <input type="hidden" name="_token" value="{{ csrf_token('excluir_assunto_' ~ assunto.codigo) }}">
-                                    <button class="link-button danger" type="submit">Excluir</button>
-                                </form>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </section>
-        {% endif %}
+                {% for message in app.flashes('success') %}
+                    <div class="flash flash-success" role="status">{{ message }}</div>
+                {% endfor %}
+                {% for message in app.flashes('error') %}
+                    <div class="flash flash-error" role="alert">{{ message }}</div>
+                {% endfor %}
+
+                {% if assuntos is empty %}
+                    <section class="empty-state authors-empty">
+                        <h3>Nenhum assunto cadastrado</h3>
+                        <p>Cadastre o primeiro assunto para organizar o acervo.</p>
+                    </section>
+                {% else %}
+                    <section class="table-card authors-table-card">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Descrição</th>
+                                    <th class="actions-column">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for assunto in assuntos %}
+                                <tr>
+                                    <td>{{ assunto.codigo }}</td>
+                                    <td>{{ assunto.descricao }}</td>
+                                    <td class="table-actions">
+                                        <a class="link-button" href="{{ path('app_assunto_editar', {codigo: assunto.codigo}) }}">Editar</a>
+                                        <form method="post" action="{{ path('app_assunto_excluir', {codigo: assunto.codigo}) }}" onsubmit="return confirm('Excluir o assunto {{ assunto.descricao|e('js') }}?');">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('excluir_assunto_' ~ assunto.codigo) }}">
+                                            <button class="link-button danger" type="submit">Excluir</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </section>
+                {% endif %}
+            </div>
+        </section>
     </main>
 {% endblock %}

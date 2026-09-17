@@ -3,10 +3,26 @@
 {% block title %}Editar autor | MyLibrary{% endblock %}
 
 {% block body %}
-    <main class="catalog-page form-page">
-        <a class="back-link" href="{{ path('app_autor_index') }}">← Autores</a>
-        <h1>Editar autor</h1>
-        <p>Atualize os dados de {{ autor.nome }}.</p>
-        {% include 'autor/_form.html.twig' with {form: form} only %}
+    <main class="auth-portal app-portal authors-portal">
+        <section class="app-shell authors-shell">
+            <div class="app-welcome authors-welcome">
+                <h1>Editar autor</h1>
+            </div>
+
+            <div class="app-content-panel authors-panel">
+                <div class="app-content-panel__header authors-header-row">
+                    <div class="app-panel-title-wrap">
+                        <span class="auth-lock" aria-hidden="true">📝</span>
+                        <div>
+                            <h2>Atualização de autor</h2>
+                            <p>Atualize os dados de {{ autor.nome }}.</p>
+                        </div>
+                    </div>
+                    <a class="link-button" href="{{ path('app_autor_index') }}">← Voltar</a>
+                </div>
+
+                {% include 'autor/_form.html.twig' with {form: form} only %}
+            </div>
+        </section>
     </main>
 {% endblock %}

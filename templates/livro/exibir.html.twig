@@ -1,19 +1,38 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}{{ livro.titulo }} | MyLibrary{% endblock %}
+
 {% block body %}
-    <main class="catalog-page form-page">
-        <a class="back-link" href="{{ path('app_livro_index') }}">← Livros</a>
-        <h1>{{ livro.titulo }}</h1>
-        <section class="details-card">
-            <dl>
-                <dt>Editora</dt><dd>{{ livro.editora }}</dd>
-                <dt>Edição</dt><dd>{{ livro.edicao }}</dd>
-                <dt>Ano de publicação</dt><dd>{{ livro.anoPublicacao }}</dd>
-                <dt>Valor</dt><dd>R$ {{ (livro.valor / 100)|number_format(2, ',', '.') }}</dd>
-                <dt>Autores</dt><dd>{{ livro.autores|map(autor => autor.nome)|join(', ') }}</dd>
-                <dt>Assuntos</dt><dd>{{ livro.assuntos|map(assunto => assunto.descricao)|join(', ') }}</dd>
-            </dl>
-            <a class="button" href="{{ path('app_livro_editar', {codigo: livro.codigo}) }}">Editar livro</a>
+    <main class="auth-portal app-portal authors-portal">
+        <section class="app-shell authors-shell">
+            <div class="app-welcome authors-welcome">
+                <h1>{{ livro.titulo }}</h1>
+            </div>
+
+            <div class="app-content-panel authors-panel">
+                <div class="app-content-panel__header authors-header-row">
+                    <div class="app-panel-title-wrap">
+                        <span class="auth-lock" aria-hidden="true">📘</span>
+                        <div>
+                            <h2>Detalhes do livro</h2>
+                            <p>Consulta rápida das informações do registro.</p>
+                        </div>
+                    </div>
+                    <a class="link-button" href="{{ path('app_livro_index') }}">← Voltar</a>
+                </div>
+
+                <section class="details-card">
+                    <dl>
+                        <dt>Editora</dt><dd>{{ livro.editora }}</dd>
+                        <dt>Edição</dt><dd>{{ livro.edicao }}</dd>
+                        <dt>Ano de publicação</dt><dd>{{ livro.anoPublicacao }}</dd>
+                        <dt>Valor</dt><dd>R$ {{ (livro.valor / 100)|number_format(2, ',', '.') }}</dd>
+                        <dt>Autores</dt><dd>{{ livro.autores|map(autor => autor.nome)|join(', ') }}</dd>
+                        <dt>Assuntos</dt><dd>{{ livro.assuntos|map(assunto => assunto.descricao)|join(', ') }}</dd>
+                    </dl>
+                    <a class="auth-submit app-submit" href="{{ path('app_livro_editar', {codigo: livro.codigo}) }}">Editar livro</a>
+                </section>
+            </div>
         </section>
     </main>
 {% endblock %}

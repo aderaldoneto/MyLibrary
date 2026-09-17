@@ -13,6 +13,10 @@ body {
     padding: 0;
 }
 
+body {
+    overflow-y: auto;
+}
+
 body:has(.auth-portal) {
     overflow: hidden;
 }
@@ -25,8 +29,7 @@ body:has(.auth-portal) {
     flex-direction: column;
     font-family: Arial, sans-serif;
     min-height: 0;
-    overflow: hidden;
-    
+    overflow: auto;
 }
 
 .auth-header { align-items: center; background: #0078AA; color: #fff; display: flex; justify-content: space-between; min-height: 50px; padding-left: 15px; padding-right: 15px; }
@@ -179,6 +182,128 @@ body:has(.auth-portal) {
     justify-content: center;
     text-decoration: none;
     width: fit-content;
+}
+
+.authors-portal {
+    min-height: calc(100vh - 100px);
+}
+.authors-shell {
+    max-width: 1200px;
+}
+.authors-welcome h1 {
+    color: #174f73;
+    margin: 0 0 12px;
+}
+.authors-panel {
+    max-width: 1200px;
+}
+.authors-header-row {
+    align-items: center;
+    justify-content: space-between;
+}
+.app-panel-title-wrap {
+    align-items: center;
+    display: flex;
+    gap: 14px;
+}
+.authors-empty {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+}
+.authors-empty h3 {
+    color: #174f73;
+    margin-top: 0;
+}
+.authors-table-card {
+    overflow: hidden;
+}
+.author-form {
+    max-width: 520px;
+}
+.author-form .form-group {
+    margin-bottom: 18px;
+}
+.author-form label {
+    color: #334e5f;
+    display: block;
+    font-size: .88rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.author-form input {
+    border: 1px solid #b8c5ce;
+    border-radius: 2px;
+    box-sizing: border-box;
+    font: inherit;
+    padding: 10px 11px;
+    width: 100%;
+}
+.author-form input:focus {
+    border-color: #2572a2;
+    box-shadow: 0 0 0 2px rgba(37, 114, 162, .15);
+    outline: 0;
+}
+.author-form-actions {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+}
+.author-form-actions button {
+    background: #1a78ae;
+    border: 1px solid #126b9f;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    font-size: .88rem;
+    font-weight: 700;
+    padding: 11px 18px;
+}
+.livro-form {
+    max-width: 760px;
+}
+.livro-form .form-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.livro-form select,
+.livro-form input {
+    border: 1px solid #b8c5ce;
+    border-radius: 2px;
+    box-sizing: border-box;
+    font: inherit;
+    padding: 10px 11px;
+    width: 100%;
+}
+.livro-form select:focus,
+.livro-form input:focus {
+    border-color: #2572a2;
+    box-shadow: 0 0 0 2px rgba(37, 114, 162, .15);
+    outline: 0;
+}
+.details-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    max-width: 760px;
+    padding: 20px;
+}
+.details-card dl {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: minmax(170px, 1fr) 2fr;
+    margin: 0 0 24px;
+}
+.details-card dt {
+    color: #334e5f;
+    font-weight: 700;
+}
+.details-card dd {
+    color: #475467;
+    margin: 0;
 }
 @media (max-width: 720px) {
     .auth-header { align-items: flex-start; flex-direction: column; padding: 14px 24px 0; }

@@ -1,4 +1,4 @@
-{{ form_start(form, {attr: {class: 'catalog-form livro-form'}}) }}
+{{ form_start(form, {attr: {class: 'catalog-form author-form livro-form'}}) }}
     {{ form_row(form.titulo) }}
     {{ form_row(form.editora) }}
     <div class="form-grid">
@@ -8,7 +8,7 @@
     {{ form_row(form.valor) }}
     {{ form_row(form.autores) }}
     {{ form_row(form.assuntos) }}
-    <div class="form-actions">
+    <div class="form-actions author-form-actions">
         <a class="link-button" href="{{ path('app_livro_index') }}">Cancelar</a>
         <button type="submit">Salvar</button>
     </div>
