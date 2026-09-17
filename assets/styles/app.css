@@ -26,12 +26,14 @@ body:has(.auth-portal) {
     font-family: Arial, sans-serif;
     min-height: 0;
     overflow: hidden;
+    
 }
+
 .auth-header { align-items: center; background: #0078AA; color: #fff; display: flex; justify-content: space-between; min-height: 50px; padding-left: 15px; padding-right: 15px; }
-.auth-brand { align-items: center; display: flex; font-size: 1.35rem; font-weight: 600; gap: 12px; letter-spacing: .01em; }
+.auth-brand { align-items: center; color: inherit; display: flex; font-size: 1.35rem; font-weight: 600; gap: 12px; letter-spacing: .01em; cursor: pointer; text-decoration: none; }
 .auth-brand-mark { align-items: center; border: 1px solid #e5a622; border-radius: 4px; display: inline-flex; font-size: .82rem; font-weight: 700; height: 32px; justify-content: center; width: 32px; }
 .auth-nav { align-items: stretch; align-self: stretch; display: flex; font-family: 'Open Sans regular', Verdana, Arial sans-serif;}
-.auth-nav button { background: transparent; border: 0; border-left: 0px solid rgba(255,255,255,.17); color: #e9f3f8; cursor: default; font: inherit; font-size: .82rem; padding: 0 17px; }
+.auth-nav button { background: transparent; border: 0; border-left: 0px solid rgba(255,255,255,.17); color: #e9f3f8; cursor: pointer; font: inherit; font-size: .82rem; padding: 0 17px; }
 .auth-nav button:last-child { border-right: 1px solid rgba(255,255,255,.17); }
 .auth-main {
     align-items: center;
