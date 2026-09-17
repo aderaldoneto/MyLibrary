@@ -27,7 +27,9 @@
 
         {% block body %}{% endblock %}
 
-        {% if not app.user %}
+        {% if app.user %}
+            {% include 'partials/footer_logged.html.twig' %}
+        {% else %}
             {% include 'partials/footer_public.html.twig' %}
         {% endif %}
     </body>

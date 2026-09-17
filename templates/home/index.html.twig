@@ -3,32 +3,73 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    <div style="max-width: 900px; margin: 60px auto; padding: 32px; font-family: Arial, sans-serif;">
-        <div style="margin-bottom: 24px;">
-            <h1 style="margin: 0;">Home</h1>
-            <p style="margin: 8px 0 0; color: #475467;">Bem-vindo(a), {{ user.userName }} {{ user.userLastName }}</p>
-        </div>
+    <main class="auth-portal app-portal">
+        <section class="app-shell">
+            <div class="app-content-panel">
+                <div class="app-content-panel__header">
+                    <span class="auth-lock" aria-hidden="true">📖</span>
+                    <div>
+                        <p>Selecione uma opção do menu para acessar o módulo desejado.</p>
+                    </div>
+                </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
-            <div style="padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
-                <h2 style="margin-top: 0; font-size: 18px;">Acervo</h2>
-                <p style="margin-bottom: 12px; color: #475467;">Gerencie os livros da biblioteca.</p>
-                <a href="{{ path('app_livro_index') }}">Gerenciar livros</a>
+                <div class="app-panel-content active" data-panel="home">
+                    <div class="app-panel-grid">
+                        <article class="app-card">
+                            <h3>Acervo</h3>
+                            <p>Gerencie os livros da biblioteca.</p>
+                            <a href="{{ path('app_livro_index') }}">Gerenciar livros</a>
+                        </article>
+                        <article class="app-card">
+                            <h3>Autores</h3>
+                            <p>Cadastre e mantenha os autores do acervo.</p>
+                            <a href="{{ path('app_autor_index') }}">Gerenciar autores</a>
+                        </article>
+                        <article class="app-card">
+                            <h3>Assuntos</h3>
+                            <p>Organize os assuntos do catálogo.</p>
+                            <a href="{{ path('app_assunto_index') }}">Gerenciar assuntos</a>
+                        </article>
+                        <article class="app-card">
+                            <h3>Relatórios</h3>
+                            <p>Acesse relatórios do acervo.</p>
+                            <a href="#">Ver relatórios</a>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="app-panel-content" data-panel="livros">
+                    <div class="app-panel-inner">
+                        <h3>Livros</h3>
+                        <p>Gerencie títulos, valores, autores e assuntos.</p>
+                        <a class="auth-submit app-submit" href="{{ path('app_livro_index') }}">Acessar livros</a>
+                    </div>
+                </div>
+
+                <div class="app-panel-content" data-panel="autores">
+                    <div class="app-panel-inner">
+                        <h3>Autores</h3>
+                        <p>Cadastre, edite e mantenha informações dos autores.</p>
+                        <a class="auth-submit app-submit" href="{{ path('app_autor_index') }}">Acessar autores</a>
+                    </div>
+                </div>
+
+                <div class="app-panel-content" data-panel="assuntos">
+                    <div class="app-panel-inner">
+                        <h3>Assuntos</h3>
+                        <p>Organize e mantenha a classificação do acervo.</p>
+                        <a class="auth-submit app-submit" href="{{ path('app_assunto_index') }}">Acessar assuntos</a>
+                    </div>
+                </div>
+
+                <div class="app-panel-content" data-panel="relatorios">
+                    <div class="app-panel-inner">
+                        <h3>Relatórios</h3>
+                        <p>Consulte dados e indicadores do sistema.</p>
+                        <button class="auth-submit app-submit" type="button">Em breve</button>
+                    </div>
+                </div>
             </div>
-            <div style="padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
-                <h2 style="margin-top: 0; font-size: 18px;">Autores</h2>
-                <p style="margin-bottom: 12px; color: #475467;">Cadastre e mantenha os autores do acervo.</p>
-                <a href="{{ path('app_autor_index') }}">Gerenciar autores</a>
-            </div>
-            <div style="padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
-                <h2 style="margin-top: 0; font-size: 18px;">Assuntos</h2>
-                <p style="margin-bottom: 12px; color: #475467;">Organize os assuntos do catálogo.</p>
-                <a href="{{ path('app_assunto_index') }}">Gerenciar assuntos</a>
-            </div>
-            <div style="padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
-                <h2 style="margin-top: 0; font-size: 18px;">Relatórios</h2>
-                <p style="margin-bottom: 12px; color: #475467;">Acesse relatórios do acervo.</p>
-            </div>
-        </div>
-    </div>
+        </section>
+    </main>
 {% endblock %}

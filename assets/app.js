@@ -28,3 +28,30 @@ document.addEventListener('input', (event) => {
         formatCurrencyInput(event.target);
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuItems = document.querySelectorAll('.app-menu-item');
+    const panels = document.querySelectorAll('.app-panel-content');
+    const title = document.getElementById('app-panel-title');
+
+    const panelTitles = {
+        home: 'Home',
+        livros: 'Livros',
+        autores: 'Autores',
+        assuntos: 'Assuntos',
+        relatorios: 'Relatórios'
+    };
+
+    menuItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const target = item.dataset.target;
+
+            menuItems.forEach((button) => button.classList.toggle('active', button === item));
+            panels.forEach((panel) => panel.classList.toggle('active', panel.dataset.panel === target));
+
+            if (title && panelTitles[target]) {
+                title.textContent = panelTitles[target];
+            }
+        });
+    });
+});
