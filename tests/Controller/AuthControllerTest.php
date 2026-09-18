@@ -21,6 +21,7 @@ class AuthControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Acesso ao sistema');
+        $this->assertSelectorExists('input[name="_csrf_token"]');
     }
 
     public function testProtectedHomeRedirectsToLoginForAnonymousUser(): void
