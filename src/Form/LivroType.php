@@ -30,7 +30,7 @@ final class LivroType extends AbstractType
                 'label_attr' => ['class' => 'form-label']])
             ->add('valor', TextType::class, [
                 'label' => 'Valor',
-                'attr' => ['class' => 'form-control', 'data-currency-mask' => true, 'inputmode' => 'numeric', 'autocomplete' => 'off'],
+                'attr' => ['class' => 'form-control', 'data-currency-mask' => true, 'inputmode' => 'numeric', 'autocomplete' => 'off', 'maxlength' => 12],
                 'label_attr' => ['class' => 'form-label'],
             ])
             ->add('autores', EntityType::class, [
