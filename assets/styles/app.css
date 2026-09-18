@@ -223,17 +223,6 @@ body:has(.auth-portal) {
     transform: translateY(-1px);
 }
 
-.pagination__link--primary {
-    background: #1a78ae;
-    border-color: #126b9f;
-    color: #fff;
-}
-
-.pagination__link--primary:hover {
-    background: #166d9f;
-    color: #fff;
-}
-
 .pagination__status {
     background: #eef5f8;
     border: 1px solid #d7e4eb;
