@@ -20,7 +20,16 @@ class AuthControllerTest extends WebTestCase
         $client->request('GET', '/login');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Login');
+        $this->assertSelectorTextContains('h1', 'Acesso ao sistema');
+    }
+
+    public function testProtectedHomeRedirectsToLoginForAnonymousUser(): void
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/home');
+
+        $this->assertResponseRedirects('/login');
     }
 
     public function testUserEntityExposesEmailAsIdentifier(): void
