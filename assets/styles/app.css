@@ -188,6 +188,102 @@ body:has(.auth-portal) {
 .report-author h3 { background: #eef5f8; color: #174f73; font-size: 1rem; margin: 0; padding: 12px 16px; }
 .report-author .table { margin-bottom: 0; }
 
+.report-summary {
+    background: #ebf0f3;
+    border: 1px solid #c5e6cf;
+    border-radius: 10px;
+    color: black;
+    font-size: 0.92rem;
+    margin-top: 18px;
+    padding: 12px 14px;
+    text-align: right;
+}
+
+.report-filter {
+    background: #f8fafc;
+    border: 1px solid #d8e0e5;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    overflow: hidden;
+}
+
+.report-filter summary {
+    cursor: pointer;
+    font-weight: 700;
+    list-style: none;
+    padding: 14px 16px;
+    color: #174f73;
+}
+
+.report-filter summary::-webkit-details-marker { display: none; }
+
+.report-filter[open] summary {
+    border-bottom: 1px solid #d8e0e5;
+}
+
+.report-filter__form {
+    padding: 16px;
+}
+
+.report-filter__grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.report-filter__grid label {
+    color: #334e5f;
+    display: grid;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.report-filter__grid input {
+    border: 1px solid #b8c5ce;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font: inherit;
+    padding: 10px 11px;
+    width: 100%;
+}
+
+.report-filter__grid input:focus {
+    border-color: #2572a2;
+    box-shadow: 0 0 0 2px rgba(37, 114, 162, 0.12);
+    outline: 0;
+}
+
+.report-filter__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 18px;
+}
+
+.report-filter__button {
+    align-items: center;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    display: inline-flex;
+    font: inherit;
+    font-weight: 700;
+    justify-content: center;
+    padding: 10px 18px;
+    text-decoration: none;
+}
+
+.report-filter__button--primary {
+    background: #1a78ae;
+    color: #fff;
+}
+
+.report-filter__button--muted {
+    background: #eaf1f5;
+    color: #21506f;
+}
+
 .pagination {
     align-items: center;
     border-top: 1px solid #d8e0e5;

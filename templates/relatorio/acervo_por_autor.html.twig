@@ -16,6 +16,31 @@
                     </div>
                 </div>
 
+                <details class="report-filter" open>
+                    <summary>Filtro</summary>
+                    <form method="get" class="report-filter__form">
+                        <div class="report-filter__grid">
+                            <label>
+                                Autor
+                                <input type="text" name="autor" value="{{ filters.autor|default('') }}" placeholder="Nome do autor">
+                            </label>
+                            <label>
+                                Editora
+                                <input type="text" name="editora" value="{{ filters.editora|default('') }}" placeholder="Nome da editora">
+                            </label>
+                            <label>
+                                Ano
+                                <input type="text" name="ano" value="{{ filters.ano|default('') }}" placeholder="Ex.: 2024">
+                            </label>
+                        </div>
+
+                        <div class="report-filter__actions">
+                            <a class="report-filter__button report-filter__button--muted" href="{{ path('app_relatorio_acervo_por_autor') }}">Limpar</a>
+                            <button class="report-filter__button report-filter__button--primary" type="submit">Aplicar</button>
+                        </div>
+                    </form>
+                </details>
+
                 {% if autores is empty %}
                     <div class="alert alert-info mb-0" role="status">Não há livros com autores para exibir no relatório.</div>
                 {% else %}
@@ -37,6 +62,10 @@
                             </div>
                         </section>
                     {% endfor %}
+
+                    <div class="report-summary" role="status">
+                        <strong>{{ totalRegistros }}</strong> elemento(s) encontrado(s) no relatório.
+                    </div>
                 {% endif %}
             </div>
         </section>

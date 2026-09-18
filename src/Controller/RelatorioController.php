@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\RelatorioAcervoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -11,10 +12,24 @@ use Symfony\Component\Routing\Attribute\Route;
 final class RelatorioController extends AbstractController
 {
     #[Route('/acervo-por-autor', name: 'acervo_por_autor', methods: ['GET'])]
-    public function acervoPorAutor(RelatorioAcervoRepository $relatorio): Response
+    public function acervoPorAutor(Request $request, RelatorioAcervoRepository $relatorio): Response
     {
+        $filters = [
+            'autor' => trim((string) $request->query->get('autor', '')),
+            'editora' => trim((string) $request->query->get('editora', '')),
+            'ano' => trim((string) $request->query->get('ano', '')),
+        ];
+
+        $linhas = $relatorio->findAllGroupedByAuthor(
+            $filters['autor'],
+            $filters['editora'],
+            $filters['ano'],
+        );
+
         return $this->render('relatorio/acervo_por_autor.html.twig', [
-            'autores' => $this->groupByAuthor($relatorio->findAllGroupedByAuthor()),
+            'autores' => $this->groupByAuthor($linhas),
+            'filters' => $filters,
+            'totalRegistros' => count($linhas),
         ]);
     }
 
