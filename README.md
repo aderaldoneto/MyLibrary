@@ -54,6 +54,20 @@ docker compose run --rm composer install
 docker compose up -d --build
 ```
 
+## APP_SECRET
+
+Rode:
+
+```bash
+docker compose exec app php -r "echo bin2hex(random_bytes(32)), PHP_EOL;"
+```
+Copie o resultado para o `.env.local` em APP_SECRET. 
+
+Depois, limpe o cache: 
+```bash
+docker compose exec app php bin/console cache:clear
+```
+
 A aplicação rodando em [http://localhost:8080].
 
 ### Banco de dados e migrations
@@ -103,20 +117,4 @@ src/
 migrations/           # Estrutura, view e dados iniciais
 templates/            # Telas Twig e páginas de erro
 tests/                # Testes automatizados
-```
-
-## Comandos úteis
-
-```bash
-# Acompanhar os containers
-docker compose ps
-
-# Ver logs da aplicação
-docker compose logs -f app
-
-# Abrir terminal no container PHP
-docker compose exec app bash
-
-# Limpar o cache da aplicação
-docker compose exec app php bin/console cache:clear
 ```
