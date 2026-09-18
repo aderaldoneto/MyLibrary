@@ -188,6 +188,58 @@ body:has(.auth-portal) {
 .report-author h3 { background: #eef5f8; color: #174f73; font-size: 1rem; margin: 0; padding: 12px 16px; }
 .report-author .table { margin-bottom: 0; }
 
+.pagination {
+    align-items: center;
+    border-top: 1px solid #d8e0e5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 24px;
+    padding-top: 18px;
+}
+
+.pagination__link,
+.pagination__status {
+    border-radius: 999px;
+    display: inline-flex;
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: 10px 14px;
+}
+
+.pagination__link {
+    background: #f8fafc;
+    border: 1px solid #cfe0ea;
+    color: #1d5d85;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.pagination__link:hover {
+    background: #edf6fb;
+    border-color: #9ac0d6;
+    transform: translateY(-1px);
+}
+
+.pagination__link--primary {
+    background: #1a78ae;
+    border-color: #126b9f;
+    color: #fff;
+}
+
+.pagination__link--primary:hover {
+    background: #166d9f;
+    color: #fff;
+}
+
+.pagination__status {
+    background: #eef5f8;
+    border: 1px solid #d7e4eb;
+    color: #334e5f;
+}
+
 .authors-portal {
     min-height: calc(100vh - 100px);
 }

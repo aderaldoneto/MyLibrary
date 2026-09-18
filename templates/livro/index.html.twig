@@ -64,13 +64,13 @@
                     {% if totalPages > 1 %}
                         <nav class="pagination" aria-label="Paginação de livros">
                             {% if page > 1 %}
-                                <a href="{{ path('app_livro_index', {'page': page - 1}) }}">Anterior</a>
+                                <a class="pagination__link" href="{{ path('app_livro_index', {'page': page - 1}) }}">Anterior</a>
                             {% endif %}
 
-                            <span>Página {{ page }} de {{ totalPages }}</span>
+                            <span class="pagination__status">Página {{ page }} de {{ totalPages }}</span>
 
                             {% if page < totalPages %}
-                                <a href="{{ path('app_livro_index', {'page': page + 1}) }}">Próxima</a>
+                                <a class="pagination__link pagination__link--primary" href="{{ path('app_livro_index', {'page': page + 1}) }}">Próxima</a>
                             {% endif %}
                         </nav>
                     {% endif %}
