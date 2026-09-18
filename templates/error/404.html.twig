@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Página não encontrada | MyLibrary{% endblock %}
+
+{% block body %}
+    <main class="auth-portal app-portal">
+        <section class="container py-5 text-center">
+            <div class="error-card card border-0 shadow-sm mx-auto">
+                <div class="card-body p-4 p-md-5">
+                    <p class="error-code">404</p>
+                    <h1 class="h3">Página não encontrada</h1>
+                    <p class="text-secondary mb-4">O endereço informado não existe ou o registro não está disponível.</p>
+                    <a class="btn btn-primary" href="{{ path('app_home') }}">Voltar para a home</a>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
