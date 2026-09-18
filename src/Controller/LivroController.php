@@ -16,9 +16,23 @@ use Symfony\Component\Routing\Attribute\Route;
 final class LivroController extends AbstractController
 {
     #[Route('', name: 'index', methods: ['GET'])]
-    public function index(LivroRepository $livros): Response
+    public function index(Request $request, LivroRepository $livros): Response
     {
-        return $this->render('livro/index.html.twig', ['livros' => $livros->findAllForListing()]);
+        $page = max(1, (int) $request->query->get('page', 1));
+        $limit = 10;
+        $total = $livros->countAll();
+        $totalPages = max(1, (int) ceil($total / $limit));
+
+        if ($page > $totalPages) {
+            $page = $totalPages;
+        }
+
+        return $this->render('livro/index.html.twig', [
+            'livros' => $livros->findPage($page, $limit),
+            'page' => $page,
+            'totalPages' => $totalPages,
+            'total' => $total,
+        ]);
     }
 
     #[Route('/novo', name: 'novo', methods: ['GET', 'POST'])]

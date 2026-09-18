@@ -22,4 +22,25 @@ class AutorRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /** @return list<Autor> */
+    public function findPage(int $page, int $limit = 10): array
+    {
+        $page = max(1, $page);
+
+        return $this->createQueryBuilder('autor')
+            ->orderBy('autor.nome', 'ASC')
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function countAll(): int
+    {
+        return (int) $this->createQueryBuilder('autor')
+            ->select('count(autor.codigo)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

@@ -25,6 +25,29 @@ class LivroRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /** @return list<Livro> */
+    public function findPage(int $page, int $limit = 10): array
+    {
+        $page = max(1, $page);
+
+        return $this->createQueryBuilder('livro')
+            ->leftJoin('livro.autores', 'autor')->addSelect('autor')
+            ->leftJoin('livro.assuntos', 'assunto')->addSelect('assunto')
+            ->orderBy('livro.titulo', 'ASC')
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function countAll(): int
+    {
+        return (int) $this->createQueryBuilder('livro')
+            ->select('count(livro.codigo)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     public function findOneForDetail(int $codigo): ?Livro
     {
         return $this->createQueryBuilder('livro')

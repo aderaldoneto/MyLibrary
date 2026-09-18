@@ -17,10 +17,22 @@ use Symfony\Component\Routing\Attribute\Route;
 final class AssuntoController extends AbstractController
 {
     #[Route('', name: 'index', methods: ['GET'])]
-    public function index(AssuntoRepository $assuntos): Response
+    public function index(Request $request, AssuntoRepository $assuntos): Response
     {
+        $page = max(1, (int) $request->query->get('page', 1));
+        $limit = 10;
+        $total = $assuntos->countAll();
+        $totalPages = max(1, (int) ceil($total / $limit));
+
+        if ($page > $totalPages) {
+            $page = $totalPages;
+        }
+
         return $this->render('assunto/index.html.twig', [
-            'assuntos' => $assuntos->findAllAlphabetically(),
+            'assuntos' => $assuntos->findPage($page, $limit),
+            'page' => $page,
+            'totalPages' => $totalPages,
+            'total' => $total,
         ]);
     }
 

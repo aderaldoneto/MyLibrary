@@ -22,4 +22,25 @@ class AssuntoRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /** @return list<Assunto> */
+    public function findPage(int $page, int $limit = 10): array
+    {
+        $page = max(1, $page);
+
+        return $this->createQueryBuilder('assunto')
+            ->orderBy('assunto.descricao', 'ASC')
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function countAll(): int
+    {
+        return (int) $this->createQueryBuilder('assunto')
+            ->select('count(assunto.codigo)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }
